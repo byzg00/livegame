@@ -23,21 +23,23 @@ const board = new Board(gameState, (x, y) => {
     board.render(gameState);
 });
 
-const $startBtn = document.getElementById('start');
-const $stopBtn = document.getElementById('stop');
+const $startBtn = document.getElementById('start') as HTMLButtonElement;
+const $stopBtn = document.getElementById('stop') as HTMLButtonElement;
 
-const runner = new Runner(board, gameState, () => {
-    $stopBtn.disabled = true;
-    $startBtn.disabled = false;
-    localStorage.setItem('initAlive', JSON.stringify(runner.gens[runner.gens.length - 1]))
-})
+if ($startBtn && $stopBtn) {
+    const runner = new Runner(board, gameState, () => {
+        $stopBtn.disabled = true;
+        $startBtn.disabled = false;
+        localStorage.setItem('initAlive', JSON.stringify(runner.gens[runner.gens.length - 1]))
+    })
 
-$startBtn.addEventListener('click', () => {
-    $startBtn.disabled = true;
-    $stopBtn.disabled = false;
-    runner.run();
-})
+    $startBtn.addEventListener('click', () => {
+        $startBtn.disabled = true;
+        $stopBtn.disabled = false;
+        runner.run();
+    })
 
-$stopBtn.addEventListener('click', () => {
-    runner.stop();
-})
+    $stopBtn.addEventListener('click', () => {
+        runner.stop();
+    })
+}

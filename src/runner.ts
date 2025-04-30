@@ -1,4 +1,4 @@
-import {Board} from "./board/index";
+import {Board} from "./board";
 import {Cell, GameState} from "./game-state";
 
 type Gen = Cell[];
@@ -16,7 +16,7 @@ function areCellsEqual(a: Gen, b: Gen): boolean {
 }
 
 export class Runner {
-    private intervalId: number;
+    private intervalId: number = 0;
     private board: Board;
     private gameState: GameState;
     public gens: Gen[] = [];
