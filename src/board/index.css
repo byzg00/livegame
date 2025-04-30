@@ -1,0 +1,29 @@
+.cell {
+    width: 50px;
+    height: 50px;
+    outline: solid 2px #808080;
+    background-color: #ffffff;
+    display: inline-block;
+    color: yellow;
+    font-size: 9px;
+}
+
+.cell.alive {
+    background-color: #1a1a1a;
+}
+
+#board {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board:not(.isRunning) .cell {
+    cursor: pointer;
+}
+#board:not(.isRunning) .cell:hover {
+    opacity: 0.8;
+}
+
+#board.isRunning .cell {
+    pointer-events: none;
+}
